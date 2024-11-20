@@ -45,13 +45,13 @@ public class GrafoDeDestinos {
         PriorityQueue<Destino> cola = new PriorityQueue<>(Comparator.comparing(precios::get));
 
         for (Destino d : destinos.values()) {
-            precios.put(d, Double.MAX_VALUE); // Inicialización de distancias
+            precios.put(d, Double.MAX_VALUE);
         }
-        precios.put(origenDestino, 0.0); // Distancia al origen es 0
+        precios.put(origenDestino, 0.0);
         cola.add(origenDestino);
 
         while (!cola.isEmpty()) {
-            Destino actual = cola.poll(); // Destino con menor distancia
+            Destino actual = cola.poll();
 
             if (actual.equals(destinoDestino)) {
                 break;
@@ -99,7 +99,7 @@ public class GrafoDeDestinos {
         System.out.println("Precio total: " + precioTotal);
     }
 
-    public void cargarPasajeroEnVuelo(String origen, String destino, int asiento, Persona persona) {
+    public void cargarPasajeroEnVuelo(String origen, String destino, Persona persona) {
         if (!destinos.containsKey(origen) || !destinos.containsKey(destino)) {
             System.out.println("Origen o destino no válido.");
             return;
@@ -108,10 +108,18 @@ public class GrafoDeDestinos {
         Destino origenDestino = destinos.get(origen);
         for (Vuelo vuelo : origenDestino.getVuelos()) {
             if (vuelo.getDestino().getNombre().equals(destino)) {
-                vuelo.agregarPasajero(asiento, persona);
+                vuelo.agregarPasajero(persona);
                 return;
             }
         }
         System.out.println("Vuelo no encontrado entre " + origen + " y " + destino);
+    }
+
+    public void imprimirPasajerosDeTodosLosVuelos() {
+        for (Destino destino : destinos.values()) {
+            for (Vuelo vuelo : destino.getVuelos()) {
+                vuelo.imprimirPasajeros();
+            }
+        }
     }
 }

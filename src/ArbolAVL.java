@@ -103,34 +103,6 @@ public class ArbolAVL {
         return contarAsientos(raiz);
     }
 
-    public void cargarTripulantes() {
-        AsientoRandom asientoRandom = new AsientoRandom();
-
-        Persona[] tripulantes = {
-                new Persona(1, "Juan", "Perez"),
-                new Persona(2, "Maria", "Gomez"),
-                new Persona(3, "Pedro", "Gonzalez"),
-                new Persona(4, "Ana", "Rodriguez"),
-                new Persona(5, "Luis", "Fernandez"),
-                new Persona(6, "Laura", "Lopez"),
-                new Persona(7, "Carlos", "Martinez"),
-                new Persona(8, "Sofia", "Sanchez"),
-                new Persona(9, "Jorge", "Diaz"),
-                new Persona(10, "Marta", "Torres")
-        };
-
-        while (contarAsientos() < 10) {
-            int asiento = asientoRandom.generarAsiento();
-            if (!existeAsiento(asiento)) {
-                int index = contarAsientos();
-                insertar(asiento, tripulantes[index]);
-                System.out.println("Asiento " + asiento + " ocupado por " + tripulantes[index].getNombre() + " " + tripulantes[index].getApellido());
-            } else {
-                System.out.println("Asiento " + asiento + " ocupado. Generando un nuevo asiento...");
-            }
-        }
-    }
-
     public void imprimirArbol() {
         imprimirArbol(raiz, "", true);
     }

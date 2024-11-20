@@ -17,16 +17,8 @@ public class Nodo {
         return asiento;
     }
 
-    public void setAsiento(int asiento) {
-        this.asiento = asiento;
-    }
-
     public Persona getPersona() {
         return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     public Nodo getLeft() {

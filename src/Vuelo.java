@@ -7,8 +7,8 @@ public class Vuelo {
     private double precioBase;
     private double precioActual;
     private ArbolAVL arbolAVL;
-    private List<Pasajero> pasajeros;
     private final int capacidadMaxima = 10;
+    private AsientoRandom asientoRandom;
 
     public Vuelo(Destino origen, Destino destino, double precioBase) {
         this.origen = origen;
@@ -16,33 +16,24 @@ public class Vuelo {
         this.precioBase = precioBase;
         this.precioActual = precioBase;
         this.arbolAVL = new ArbolAVL();
+        this.asientoRandom = new AsientoRandom();
     }
 
 
-    public Destino getOrigen() {
-        return origen;
-    }
-
-    public Destino getDestino() {
-        return destino;
-    }
-
-    public double getPrecioBase() {
-        return precioBase;
-    }
-
-    public void agregarPasajero(int asiento, Persona persona) {
+    public void agregarPasajero(Persona persona) {
         if (arbolAVL.contarAsientos() >= capacidadMaxima) {
             System.out.println("Vuelo lleno, no se puede agregar más pasajeros.");
             return;
         }
-        if (arbolAVL.existeAsiento(asiento)) {
-            System.out.println("El asiento " + asiento + " ya está ocupado.");
-            return;
-        }
+
+        int asiento;
+        do {
+            asiento = asientoRandom.generarAsiento();
+        } while (arbolAVL.existeAsiento(asiento));
+
         arbolAVL.insertar(asiento, persona);
         actualizarPrecio();
-        System.out.println("Pasajero " + persona.getNombre() + " " + persona.getApellido() + " asignado al asiento " + asiento);
+        System.out.println("Pasajero " + persona.getNombre() + " " + persona.getApellido() + " asignado al asiento " + asiento + " de " + origen.getNombre() + " a " + destino.getNombre());
     }
 
     public void mostrarAsientos() {
@@ -62,6 +53,27 @@ public class Vuelo {
         } else {
             precioActual = precioBase;
         }
+    }
+
+    public void imprimirPasajeros() {
+        if (arbolAVL.contarAsientos() == 0) {
+            return;
+        }
+        System.out.println("Pasajeros en el vuelo de " + origen.getNombre() + " a " + destino.getNombre() + ":");
+        arbolAVL.imprimirArbol();
+    }
+
+
+    public Destino getOrigen() {
+        return origen;
+    }
+
+    public Destino getDestino() {
+        return destino;
+    }
+
+    public double getPrecioBase() {
+        return precioBase;
     }
 
     @Override

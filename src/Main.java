@@ -1,17 +1,10 @@
 import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         ArbolAVL avion = new ArbolAVL();
-        avion.cargarTripulantes();
-
-        System.out.println();
-        System.out.println("Árbol AVL con tripulantes cargados:");
-        avion.imprimirArbol();
-
         GrafoDeDestinos grafoDeDestinos = new GrafoDeDestinos();
+
 
         Destino buenosAires = new Destino("Buenos Aires");
         Destino cordoba = new Destino("Cordoba");
@@ -64,10 +57,12 @@ public class Main {
         grafoDeDestinos.agregarVuelo("Santa Cruz", "Buenos Aires", 380000);
         grafoDeDestinos.agregarVuelo("Santa Cruz", "Bariloche", 550000);
 
-        grafoDeDestinos.imprimirVuelos();
 
+        System.out.println("Ruta mas barata de Cordoba a Santa Cruz:");
         List<Vuelo> vuelo = grafoDeDestinos.buscarVueloMasBarato("Cordoba", "Santa Cruz");
         grafoDeDestinos.imprimirRuta(vuelo);
+
+        System.out.println();
 
         Persona persona1 = new Persona(2, "Joni", "Monetti");
         Persona persona2 = new Persona(3, "Maria", "Gomez");
@@ -77,15 +72,21 @@ public class Main {
         Persona persona6 = new Persona(7, "Sofia", "Garcia");
         Persona persona7 = new Persona(8, "Miguel", "Rodriguez");
 
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 5, persona1);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 2, persona2);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 3, persona3);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 4, persona4);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 6, persona5);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 7, persona6);
-        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", 8, persona7);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona1);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona2);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona3);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona4);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona5);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona6);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona7);
+        grafoDeDestinos.cargarPasajeroEnVuelo("Cordoba", "Buenos Aires", persona7);
+
+        System.out.println();
 
         grafoDeDestinos.imprimirVuelos();
+
+        System.out.println("Todos los pasajeros de todos los vuelos:");
+        grafoDeDestinos.imprimirPasajerosDeTodosLosVuelos();
 
     }
 }

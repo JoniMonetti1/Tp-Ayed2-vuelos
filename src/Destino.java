@@ -19,10 +19,6 @@ public class Destino {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public List<Vuelo> getVuelos() {
         return vuelos;
     }
