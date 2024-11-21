@@ -17,4 +17,7 @@ public class Persona {
         return apellido;
     }
 
+    public int getId() {
+        return id;
+    }
 }

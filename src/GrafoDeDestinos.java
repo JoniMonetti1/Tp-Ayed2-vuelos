@@ -14,6 +14,12 @@ public class GrafoDeDestinos {
         destinos.put(destino.getNombre(), destino);
     }
 
+    public void imprimirDestinos() {
+        destinos.forEach((nombreDestino, destino) -> {
+            System.out.println("Destino: " + nombreDestino);
+        });
+    }
+
     public void agregarVuelo(String origen, String destino, double precioBase) {
         if (!destinos.containsKey(origen) || !destinos.containsKey(destino)) {
             return;
@@ -26,6 +32,9 @@ public class GrafoDeDestinos {
 
     public void imprimirVuelos() {
         destinos.forEach((nombreDestino, destino) -> {
+            if (destino.getVuelos().isEmpty()) {
+                return;
+            }
             System.out.println("Destino: " + nombreDestino);
             destino.getVuelos().forEach(System.out::println);
             System.out.println();
