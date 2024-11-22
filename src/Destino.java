@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Destino {
-    private String nombre;
-    private List<Vuelo> vuelos;
+    private final String nombre;
+    private final List<Vuelo> vuelos;
 
 
     public Destino(String nombre) {

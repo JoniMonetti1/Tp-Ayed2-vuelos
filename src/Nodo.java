@@ -1,6 +1,6 @@
 public class Nodo {
-    private int asiento;
-    private Persona persona;
+    private final int asiento;
+    private final Persona persona;
     private Nodo left;
     private Nodo right;
     private int altura;

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class GrafoDeDestinos {
-    private Map<String, Destino> destinos;
+    private final Map<String, Destino> destinos;
 
     public GrafoDeDestinos() {
         this.destinos = new HashMap<>();

@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class AsientoRandom {
 
-    private Random random;
+    private final Random random;
 
     public AsientoRandom() {
         this.random = new Random();

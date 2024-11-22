@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Vuelo {
-    private Destino origen;
-    private Destino destino;
+    private final Destino origen;
+    private final Destino destino;
     private double precioBase;
-    private ArbolAVL arbolAVL;
+    private final ArbolAVL arbolAVL;
     private final int capacidadMaxima = 10;
-    private AsientoRandom asientoRandom;
+    private final AsientoRandom asientoRandom;
 
     public Vuelo(Destino origen, Destino destino, double precioBase) {
         this.origen = origen;
