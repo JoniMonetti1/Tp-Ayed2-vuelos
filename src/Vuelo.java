@@ -5,7 +5,6 @@ public class Vuelo {
     private Destino origen;
     private Destino destino;
     private double precioBase;
-    private double precioActual;
     private ArbolAVL arbolAVL;
     private final int capacidadMaxima = 10;
     private AsientoRandom asientoRandom;
@@ -14,7 +13,6 @@ public class Vuelo {
         this.origen = origen;
         this.destino = destino;
         this.precioBase = precioBase;
-        this.precioActual = precioBase;
         this.arbolAVL = new ArbolAVL();
         this.asientoRandom = new AsientoRandom();
     }
@@ -45,13 +43,11 @@ public class Vuelo {
         double ocupacion = (double) arbolAVL.contarAsientos() / capacidadMaxima;
 
         if (ocupacion >= 0.8) {
-            precioActual = precioBase * 0.6;
+            precioBase = precioBase * 0.6;
         } else if (ocupacion >= 0.7) {
-            precioActual = precioBase * 0.8;
+            precioBase = precioBase * 0.8;
         } else if (ocupacion >= 0.5) {
-            precioActual = precioBase * 0.9;
-        } else {
-            precioActual = precioBase;
+            precioBase = precioBase * 0.9;
         }
     }
 
@@ -79,7 +75,7 @@ public class Vuelo {
     @Override
     public String toString() {
         return "Vuelo de " + origen.getNombre() + " a " + destino.getNombre() +
-                " | Precio actual: $" + precioActual +
+                " | Precio actual: $" + precioBase +
                 " | Asientos ocupados: " + arbolAVL.contarAsientos() + "/" + capacidadMaxima;
     }
 }

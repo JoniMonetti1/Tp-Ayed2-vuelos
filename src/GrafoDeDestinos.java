@@ -131,4 +131,20 @@ public class GrafoDeDestinos {
             }
         }
     }
+
+    public void imprimirPasajerosDeVuelo(String origen, String destino) {
+        if (!destinos.containsKey(origen) || !destinos.containsKey(destino)) {
+            System.out.println("Origen o destino no válido.");
+            return;
+        }
+
+        Destino origenDestino = destinos.get(origen);
+        for (Vuelo vuelo : origenDestino.getVuelos()) {
+            if (vuelo.getDestino().getNombre().equals(destino)) {
+                vuelo.imprimirPasajeros();
+                return;
+            }
+        }
+        System.out.println("Vuelo no encontrado entre " + origen + " y " + destino);
+    }
 }

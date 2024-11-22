@@ -15,7 +15,7 @@ public class GUI {
         int opcion = sc.nextInt();
         sc.nextLine();
 
-        while (opcion != 8) {
+        while (opcion != 9) {
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el nombre del destino: ");
@@ -67,6 +67,13 @@ public class GUI {
                     grafoDeDestinos.cargarPasajeroEnVuelo(InputOrigen, InputDestino, pasajero);
                     break;
                 case 8:
+                    System.out.print("Ingrese el origen: ");
+                    InputOrigen = sc.nextLine().toLowerCase();
+                    System.out.print("Ingrese el destino: ");
+                    InputDestino = sc.nextLine().toLowerCase();
+                    grafoDeDestinos.imprimirPasajerosDeVuelo(InputOrigen, InputDestino);
+                    break;
+                case 9:
                     System.exit(0);
                     break;
                 default:
@@ -91,7 +98,8 @@ public class GUI {
         System.out.println("5. Buscar vuelo más barato");
         System.out.println("6. Cargar pasajero");
         System.out.println("7. Cargar pasajero en un vuelo");
-        System.out.println("8. Salir");
+        System.out.println("8. Mostrar los pasajeros de un vuelo");
+        System.out.println("9. Salir");
 
         System.out.println();
     }
